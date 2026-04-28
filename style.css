@@ -8,6 +8,7 @@
 body {
     background: #f5f7fa;
     color: #333;
+    scroll-behavior: smooth;
 }
 
 /* NAVBAR */
@@ -16,6 +17,7 @@ header {
     width: 100%;
     background: rgba(15, 23, 42, 0.95);
     z-index: 1000;
+    backdrop-filter: blur(10px);
 }
 
 nav {
@@ -45,6 +47,7 @@ nav ul li {
 nav ul li a {
     color: #e5e7eb;
     text-decoration: none;
+    transition: 0.3s;
 }
 
 nav ul li a:hover {
@@ -78,10 +81,11 @@ nav ul li a:hover {
 }
 
 .hero-text p {
-    color: #cbd5f5;
+    color: #cbd5e1;
     margin: 15px 0 25px;
 }
 
+/* BUTTONS */
 .hero-buttons {
     display: flex;
     gap: 15px;
@@ -92,6 +96,7 @@ nav ul li a:hover {
     border-radius: 30px;
     text-decoration: none;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .primary {
@@ -99,11 +104,21 @@ nav ul li a:hover {
     color: #020617;
 }
 
+.primary:hover {
+    background: #0ea5e9;
+}
+
 .outline {
     border: 2px solid #38bdf8;
     color: #38bdf8;
 }
 
+.outline:hover {
+    background: #38bdf8;
+    color: #020617;
+}
+
+/* HERO IMAGE 3D */
 .hero-image img {
     width: 260px;
     height: 260px;
@@ -111,6 +126,11 @@ nav ul li a:hover {
     border-radius: 50%;
     border: 5px solid #38bdf8;
     box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    transition: transform 0.5s ease;
+}
+
+.hero-image img:hover {
+    transform: rotateY(15deg) rotateX(10deg) scale(1.05);
 }
 
 /* SECTIONS */
@@ -130,14 +150,16 @@ nav ul li a:hover {
     max-width: 700px;
     margin: auto;
     color: #555;
+    line-height: 1.6;
 }
 
+/* DARK SECTION */
 .dark {
     background: #020617;
     color: white;
 }
 
-/* SKILLS */
+/* SKILLS 3D */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -148,19 +170,19 @@ nav ul li a:hover {
     background: #0f172a;
     padding: 20px;
     border-radius: 12px;
-    transition: 0.3s;
+    color: white;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .skill-card:hover {
-    transform: translateY(-8px);
-    background: #38bdf8;
-    color: #020617;
+    transform: perspective(1000px) rotateX(12deg) rotateY(-12deg) scale(1.05);
+    box-shadow: 0 15px 30px rgba(56, 189, 248, 0.3);
 }
 
-/* PROJECTS */
+/* PROJECTS 3D */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 25px;
 }
 
@@ -169,14 +191,15 @@ nav ul li a:hover {
     padding: 25px;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    transition: 0.3s;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
+    transform: perspective(1000px) rotateY(10deg) rotateX(10deg) translateY(-10px);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.25);
 }
 
-/* CONTACT */
+/* CONTACT FORM */
 .contact-form {
     max-width: 450px;
     margin: auto;
@@ -189,6 +212,12 @@ nav ul li a:hover {
     margin: 10px 0;
     border-radius: 8px;
     border: none;
+    outline: none;
+}
+
+.contact-form textarea {
+    height: 120px;
+    resize: none;
 }
 
 /* FOOTER */
@@ -209,6 +238,19 @@ footer {
 .animate.show {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* TYPING CURSOR */
+#typing::after {
+    content: "|";
+    color: #38bdf8;
+    animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
 }
 
 /* RESPONSIVE */
